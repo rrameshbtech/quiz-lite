@@ -1,0 +1,26 @@
+{
+  "items": [
+    {
+      "description": "How to hide an element in page?",
+      "answer": [1, 2, 3],
+      "options": [
+        "display: none",
+        "left: -9999px",
+        "visibility: hidden",
+        "height: 0px"
+      ],
+      "type": "multiple"
+    },
+    {
+      "description": "Which of the following is not a valid JavaScript variable declaration?",
+      "answer": [3],
+      "options": [
+        "let foo = 100",
+        "var foo = 100",
+        "const foo = 100",
+        "none the above"
+      ],
+      "type": "single"
+    }
+  ]
+}
