@@ -2,9 +2,11 @@ fileignoreconfig:
 - filename: .expo-shared/assets.json
   checksum: eca4a52463b08318f77c92c47260d64275353b45aa0f69da19ef2bafa6a407f3
 - filename: package-lock.json
-  checksum: 145decc9986f11fe7d3e9624e77ad285d2a2bf1fc72693994395949b7cce7ba0
+  checksum: 218a4736c3db4ca289fb325155ebd7e329d7edfaa6b453a13d51b27b63aefe33
 - filename: quiz/single-answer-question.js
   checksum: e373235045764b2014dc995db250d7c6a465bb7e7147767225643814216cc2d0
 - filename: quiz/multi-answer-question.js
   checksum: 677df90f88b695a8db38795df3eaa8d6802d57c1cb93aa923aa3121e440b6c0f
+- filename: constants.js
+  checksum: d9ac1f33c216b658218b527db2c53333479d32a65aee5bb28052202637ab5388
 version: ""
