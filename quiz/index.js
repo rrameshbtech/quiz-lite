@@ -8,7 +8,8 @@ import { items as questions } from '../assets/data/questions';
 
 export function Quiz({ navigation, route }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [score, setScore] = useState(0);
+  const [totalScore, setTotalScore] = useState(0);
+  const [totalElapsedTime, setTotalElapsedTime] = useState(0);
   const currentQuestion = questions[currentQuestionIndex];
   const { username } = route.params;
 
@@ -16,26 +17,33 @@ export function Quiz({ navigation, route }) {
     return question.type === 'single';
   }
 
-  function addScore(newScore) {
-    setScore((currentScore) => currentScore + newScore);
+  function updateTotalScore(newScore) {
+    setTotalScore((currentScore) => currentScore + newScore);
+  }
+  function updateTotalElapsedTime(newElapsedTime) {
+    setTotalElapsedTime(
+      (existingElapsedTime) => newElapsedTime + existingElapsedTime
+    );
   }
 
-  async function handleSubmittedAnswer(newScore) {
-    addScore(newScore);
+  async function handleSubmittedAnswer(score, elapsedTime) {
+    updateTotalScore(score);
+    updateTotalElapsedTime(elapsedTime);
+
     if (!isLastQuestion()) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       return;
     }
-    await showResults();
+    await storeScore();
+    showResults();
   }
 
   function isLastQuestion() {
     return currentQuestionIndex === questions.length - 1;
   }
 
-  async function showResults() {
-    await storeScore();
-    navigation.navigate('results');
+  function showResults() {
+    navigation.navigate('results', { username: 'rrameshbtech' });
   }
 
   const getExistingScores = async () => {
@@ -52,9 +60,21 @@ export function Quiz({ navigation, route }) {
 
   const storeScore = async () => {
     try {
-      const scores = await getExistingScores();
-      scores.push({ username, score });
-      await AsyncStorage.setItem(constants.STORE_KEY, JSON.stringify(scores));
+      const existingResults = await getExistingScores();
+      const currentResult = {
+        username,
+        score: totalScore,
+        elapsedTime: totalElapsedTime,
+      };
+      const updatedResults = [
+        currentResult,
+        ...existingResults.filter((result) => result.username !== username),
+      ];
+
+      await AsyncStorage.setItem(
+        constants.STORE_KEY,
+        JSON.stringify(updatedResults)
+      );
     } catch (e) {
       console.log('Error saving score: ', e);
     }

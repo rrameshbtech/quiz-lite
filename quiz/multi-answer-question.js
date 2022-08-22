@@ -4,8 +4,7 @@ import { CheckBox, Text, Button } from '@rneui/themed';
 import designTokens from '../assets/styles/design-tokens';
 import { QuestionText } from './question-text';
 import { Timer } from './timer';
-
-const SCORE = 10;
+import constants from '../constants';
 
 export function MultiAnswerQuestion({
   description,
@@ -15,6 +14,7 @@ export function MultiAnswerQuestion({
 }) {
   const [selected, setSelected] = useState([]);
   const [score, setScore] = useState(0);
+  const [elapsedTime, setElapsedTime] = useState(0);
 
   function setSelectedOptions(selectedOption) {
     selected.includes(selectedOption)
@@ -31,7 +31,7 @@ export function MultiAnswerQuestion({
     }
 
     if (isAnswerCorrect()) {
-      setScore(SCORE);
+      setScore(constants.SCORE);
     } else {
       setScore(0);
     }
@@ -43,12 +43,12 @@ export function MultiAnswerQuestion({
   }
 
   function submitAnswer() {
-    onSubmit(score, selected);
+    onSubmit(score, elapsedTime, selected);
   }
 
   return (
     <View>
-      <Timer duration={10} onElapse={submitAnswer}></Timer>
+      <Timer duration={10} onElapse={submitAnswer} onTick={setElapsedTime}></Timer>
       <QuestionText>{description}</QuestionText>
       {options.map((option) => (
         <CheckBox

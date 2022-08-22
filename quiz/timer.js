@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { LinearProgress } from '@rneui/themed';
 import { View, StyleSheet } from 'react-native';
 
-export function Timer({ duration, onElapse }) {
+export function Timer({ duration, onElapse, onTick }) {
   const durationInMs = duration * 1000;
   const [progress, setProgress] = useState(0);
   const [remaining, setRemaining] = useState(durationInMs);
@@ -21,6 +21,7 @@ export function Timer({ duration, onElapse }) {
 
     setTimeout(() => {
       setRemaining(remaining - 10);
+      onTick(durationInMs - remaining);
       setProgress((durationInMs - remaining) / durationInMs);
     }, 10);
   });

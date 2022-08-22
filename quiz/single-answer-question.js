@@ -4,6 +4,7 @@ import { CheckBox, Text } from '@rneui/themed';
 import designTokens from '../assets/styles/design-tokens';
 import { QuestionText } from './question-text';
 import { Timer } from './timer';
+import constants from '../constants';
 
 const SCORE = 10;
 export function SingleAnswerQuestion({
@@ -14,26 +15,33 @@ export function SingleAnswerQuestion({
 }) {
   const [selected, setSelected] = useState([]);
   const [score, setScore] = useState(0);
+  const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
     if (answer[0] === selected[0]) {
       setScore(SCORE);
-      console.log(selected, answer);
     } else {
       setScore(0);
     }
   }, [selected]);
 
   useEffect(() => {
-    submitAnswer();
+    if (selected.length > 0) {
+      submitAnswer();
+    }
   }, [score]);
 
   function submitAnswer() {
-    onSubmit(score, selected);
+    onSubmit(score, elapsedTime, selected);
   }
+
   return (
     <View>
-      <Timer duration={10} onElapse={submitAnswer}></Timer>
+      <Timer
+        duration={constants.TIMER_DURATION}
+        onElapse={submitAnswer}
+        onTick={setElapsedTime}
+      ></Timer>
       <QuestionText>{description}</QuestionText>
       {options.map((option) => (
         <CheckBox
