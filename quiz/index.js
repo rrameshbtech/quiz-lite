@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { MultiAnswerQuestion } from './multi-answer-question';
 import { SingleAnswerQuestion } from './single-answer-question';
@@ -8,38 +8,48 @@ import { items as questions } from '../assets/data/questions';
 
 export function Quiz({ navigation, route }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [totalScore, setTotalScore] = useState(0);
-  const [totalElapsedTime, setTotalElapsedTime] = useState(0);
+  const [answers, setAnswers] = useState([]);
   const currentQuestion = questions[currentQuestionIndex];
   const { username } = route.params;
 
   function isSingleAnswerQuestion(question) {
     return question.type === 'single';
   }
-
-  function updateTotalScore(newScore) {
-    setTotalScore((currentScore) => currentScore + newScore);
-  }
-  function updateTotalElapsedTime(newElapsedTime) {
-    setTotalElapsedTime(
-      (existingElapsedTime) => newElapsedTime + existingElapsedTime
-    );
-  }
-
+  
   async function handleSubmittedAnswer(score, elapsedTime) {
-    updateTotalScore(score);
-    updateTotalElapsedTime(elapsedTime);
-
+    setAnswers((existingAnswers) => [
+      ...existingAnswers,
+      { score, elapsedTime, index: currentQuestionIndex },
+    ]);
     if (!isLastQuestion()) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      return;
     }
-    await storeScore();
-    showResults();
   }
+
+  function totalScore() {
+    return answers.reduce((total, answer) => total + answer.score, 0);
+  }
+
+  function totalElapsedTime() {
+    return answers.reduce((total, answer) => total + answer.elapsedTime, 0);
+  }
+
+  useEffect(() => {
+    const submitResults = async () => {
+      await storeScore();
+      showResults();
+    };
+    if (isLastQuestionAnswered()) {
+      submitResults();
+    }
+  }, [answers]);
 
   function isLastQuestion() {
     return currentQuestionIndex === questions.length - 1;
+  }
+
+  function isLastQuestionAnswered() {
+    return isLastQuestion() && answers.length === currentQuestionIndex + 1;
   }
 
   function showResults() {
@@ -63,8 +73,9 @@ export function Quiz({ navigation, route }) {
       const existingResults = await getExistingScores();
       const currentResult = {
         username,
-        score: totalScore,
-        elapsedTime: totalElapsedTime,
+        answers,
+        score: totalScore(),
+        elapsedTime: totalElapsedTime(),
       };
       const updatedResults = [
         currentResult,
@@ -85,11 +96,13 @@ export function Quiz({ navigation, route }) {
       {isSingleAnswerQuestion(currentQuestion) ? (
         <SingleAnswerQuestion
           {...currentQuestion}
+          questionNumber={currentQuestionIndex + 1}
           onSubmit={handleSubmittedAnswer}
         />
       ) : (
         <MultiAnswerQuestion
           {...currentQuestion}
+          questionNumber={currentQuestionIndex + 1}
           onSubmit={handleSubmittedAnswer}
         />
       )}

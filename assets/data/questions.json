@@ -9,7 +9,7 @@
         "visibility: hidden",
         "height: 0px"
       ],
-      "type": "multiple"
+      "type": "Multiple"
     },
     {
       "description": "Which of the following is not a valid JavaScript variable declaration?",
@@ -21,6 +21,94 @@
         "none the above"
       ],
       "type": "single"
+    },
+    {
+      "description": "Which of the following gets the first matching item in the Javascript array. Ex. const items = [];",
+      "answer": ["items.find()"],
+      "options": [
+        "items.find()",
+        "items.first()",
+        "items.filter()",
+        "items.get()"
+      ],
+      "type": "single"
+    },
+    {
+      "description": "Which of the following are valid cookie properties?",
+      "answer": ["Secure", "SameSite"],
+      "options": [
+        "Secure",
+        "ValidUpto",
+        "SameSite",
+        "HttpsOnly"
+      ],
+      "type": "Multiple"
+    },
+    {
+      "description": "Which of the following inheritance type followed by Javascript?",
+      "answer": ["Prototypical"],
+      "options": [
+        "Prototypical",
+        "Class based",
+        "Struct based",
+        "All the above"
+      ],
+      "type": "Single"
+    },
+    {
+      "description": "Choose the advantages of server side rendering?",
+      "answer": ["Better search engine optimisation", "Quick time to interactive"],
+      "options": [
+        "Better search engine optimisation",
+        "Quick time to fiest byte",
+        "Lesser server load",
+        "Quick time to interactive"
+      ],
+      "type": "Multiple"
+    },
+    {
+      "description": "Which of the following are not related to React?",
+      "answer": ["Shadow Dom"],
+      "options": [
+        "Virtual Dom",
+        "Components",
+        "Shadow Dom",
+        "Context"
+      ],
+      "type": "Single"
+    },
+    {
+      "description": "Which of the following is not a design systems?",
+      "answer": ["Flutter"],
+      "options": [
+        "Fluent",
+        "Material",
+        "Flutter",
+        "Carbon"
+      ],
+      "type": "Single"
+    },
+    {
+      "description": "Choose famous design libraries",
+      "answer": ["MUI", "Tailwind", "Bulma"],
+      "options": [
+        "Bulma",
+        "Lodash",
+        "Tailwind",
+        "MUI"
+      ],
+      "type": "Multiple"
+    },
+    {
+      "description": "Which is not a valid unit in CSS?",
+      "answer": ["py"],
+      "options": [
+        "rem",
+        "cm",
+        "in",
+        "py"
+      ],
+      "type": "Single"
     }
   ]
 }

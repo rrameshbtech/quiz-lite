@@ -7,14 +7,21 @@ import { Timer } from './timer';
 import constants from '../constants';
 
 export function MultiAnswerQuestion({
+  questionNumber,
   description,
   options,
   answer,
   onSubmit,
 }) {
   const [selected, setSelected] = useState([]);
-  const [score, setScore] = useState(0);
+  // const [score, setScore] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
+
+  useEffect(() => {
+    setSelected([]);
+    // setScore(0);
+    setElapsedTime(0);
+  }, [questionNumber]);
 
   function setSelectedOptions(selectedOption) {
     selected.includes(selectedOption)
@@ -24,31 +31,30 @@ export function MultiAnswerQuestion({
       : setSelected((current) => [...current, selectedOption]);
   }
 
-  useEffect(() => {
-    if (selected.length === 0) {
-      setScore(0);
-      return;
+  const score = () => {
+    if (isCorrectAnswer()) {
+      return constants.SCORE;
     }
+    return 0;
+  };
 
-    if (isAnswerCorrect()) {
-      setScore(constants.SCORE);
-    } else {
-      setScore(0);
-    }
-  }, [selected]);
-
-  function isAnswerCorrect() {
-    console.log(selected.sort().join(''), answer.sort().join(''));
+  function isCorrectAnswer() {
+    console.log(selected.sort().join(''),  answer.sort().join(''));
     return selected.sort().join('') === answer.sort().join('');
   }
 
   function submitAnswer() {
-    onSubmit(score, elapsedTime, selected);
+    onSubmit(score(), elapsedTime, selected);
   }
 
   return (
     <View>
-      <Timer duration={10} onElapse={submitAnswer} onTick={setElapsedTime}></Timer>
+      <Timer
+        code={questionNumber}
+        duration={10}
+        onElapse={submitAnswer}
+        onTick={setElapsedTime}
+      ></Timer>
       <QuestionText>{description}</QuestionText>
       {options.map((option) => (
         <CheckBox

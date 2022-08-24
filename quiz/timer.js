@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LinearProgress } from '@rneui/themed';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-export function Timer({ duration, onElapse, onTick }) {
+export function Timer({ code, duration, onElapse, onTick }) {
   const durationInMs = duration * 1000;
   const [progress, setProgress] = useState(0);
   const [remaining, setRemaining] = useState(durationInMs);
   const [isRunning, setIsRunning] = useState(true);
+  const currentTimerRef = React.useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    setRemaining(durationInMs);
+    setIsRunning(true);
+    setProgress(0);
+    if (currentTimerRef) {
+      clearTimeout(currentTimerRef.current);
+    }
+  }, [code]);
+
+  useEffect(() => {
     if (!isRunning) {
       return;
     }
@@ -19,7 +29,10 @@ export function Timer({ duration, onElapse, onTick }) {
       return;
     }
 
-    setTimeout(() => {
+    if (currentTimerRef) {
+      clearTimeout(currentTimerRef.current);
+    }
+    currentTimerRef.current = setTimeout(() => {
       setRemaining(remaining - 10);
       onTick(durationInMs - remaining);
       setProgress((durationInMs - remaining) / durationInMs);

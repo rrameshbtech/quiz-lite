@@ -6,38 +6,39 @@ import { QuestionText } from './question-text';
 import { Timer } from './timer';
 import constants from '../constants';
 
-const SCORE = 10;
 export function SingleAnswerQuestion({
+  questionNumber,
   description,
   options,
   answer,
   onSubmit,
 }) {
   const [selected, setSelected] = useState([]);
-  const [score, setScore] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
-    if (answer[0] === selected[0]) {
-      setScore(SCORE);
-    } else {
-      setScore(0);
-    }
-  }, [selected]);
+    setSelected([]);
+    setElapsedTime(0);
+  }, [questionNumber]);
 
   useEffect(() => {
     if (selected.length > 0) {
       submitAnswer();
     }
-  }, [score]);
+  }, [selected]);
+
+  function score() {
+    return answer[0] === selected[0] ? constants.SCORE : 0;
+  }
 
   function submitAnswer() {
-    onSubmit(score, elapsedTime, selected);
+    onSubmit(score(), elapsedTime, selected);
   }
 
   return (
     <View>
       <Timer
+        code={questionNumber}
         duration={constants.TIMER_DURATION}
         onElapse={submitAnswer}
         onTick={setElapsedTime}
