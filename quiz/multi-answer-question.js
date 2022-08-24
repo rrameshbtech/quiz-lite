@@ -14,12 +14,10 @@ export function MultiAnswerQuestion({
   onSubmit,
 }) {
   const [selected, setSelected] = useState([]);
-  // const [score, setScore] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
     setSelected([]);
-    // setScore(0);
     setElapsedTime(0);
   }, [questionNumber]);
 

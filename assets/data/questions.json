@@ -20,7 +20,7 @@
         "const foo = 100",
         "none the above"
       ],
-      "type": "single"
+      "type": "Single"
     },
     {
       "description": "Which of the following gets the first matching item in the Javascript array. Ex. const items = [];",
@@ -31,7 +31,7 @@
         "items.filter()",
         "items.get()"
       ],
-      "type": "single"
+      "type": "Single"
     },
     {
       "description": "Which of the following are valid cookie properties?",

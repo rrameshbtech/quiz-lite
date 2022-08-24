@@ -4,18 +4,17 @@ import { MultiAnswerQuestion } from './multi-answer-question';
 import { SingleAnswerQuestion } from './single-answer-question';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import constants from '../constants';
-import { items as questions } from '../assets/data/questions';
 
 export function Quiz({ navigation, route }) {
+  const { username, questions } = route.params;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
   const currentQuestion = questions[currentQuestionIndex];
-  const { username } = route.params;
-
-  function isSingleAnswerQuestion(question) {
-    return question.type === 'single';
-  }
   
+  function isSingleAnswerQuestion(question) {
+    return question.type.toLowerCase() === 'single';
+  }
+
   async function handleSubmittedAnswer(score, elapsedTime) {
     setAnswers((existingAnswers) => [
       ...existingAnswers,
