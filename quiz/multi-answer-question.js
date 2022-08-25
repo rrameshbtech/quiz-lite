@@ -37,7 +37,6 @@ export function MultiAnswerQuestion({
   };
 
   function isCorrectAnswer() {
-    console.log(selected.sort().join(''),  answer.sort().join(''));
     return selected.sort().join('') === answer.sort().join('');
   }
 
@@ -58,8 +57,9 @@ export function MultiAnswerQuestion({
         <CheckBox
           key={option}
           checked={selected.includes(option)}
+          checkedColor="#454442"
           onPress={() => setSelectedOptions(option)}
-          title={<Text h4>{option}</Text>}
+          title={<Text style={styles.optionText} h4>{option}</Text>}
           containerStyle={styles.option}
         ></CheckBox>
       ))}
@@ -68,8 +68,16 @@ export function MultiAnswerQuestion({
   );
 }
 
+
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: designTokens.colors.background,
+  },
   option: {
     backgroundColor: designTokens.colors.background,
   },
+  optionText: {
+    color: '#454442',
+    margin:5
+  }
 });

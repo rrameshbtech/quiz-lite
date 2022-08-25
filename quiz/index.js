@@ -4,6 +4,7 @@ import { MultiAnswerQuestion } from './multi-answer-question';
 import { SingleAnswerQuestion } from './single-answer-question';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import constants from '../constants';
+import designTokens from '../assets/styles/design-tokens';
 
 export function Quiz({ navigation, route }) {
   const { username, questions } = route.params;
@@ -110,5 +111,9 @@ export function Quiz({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    backgroundColor: designTokens.colors.background,
+    flex:1,
+    color: 'white'
+  },
 });

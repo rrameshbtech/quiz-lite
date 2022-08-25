@@ -15,7 +15,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name='home' component={HomeScreen} />
           <Stack.Screen name='quiz' component={QuizScreen} />
           <Stack.Screen name='results' component={ResultsScreen} />

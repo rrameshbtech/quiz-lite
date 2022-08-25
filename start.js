@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { View, Text } from 'react-native';
-import { Button, Input } from '@rneui/themed';
+import { View, StyleSheet } from 'react-native';
+import { Button, Input, Text } from '@rneui/themed';
 import { items as allQuestions } from './assets/data/questions';
 import constants from './constants';
-import { StackActions } from '@react-navigation/native';
+import designTokens from './assets/styles/design-tokens';
 
 export function Start({ navigation }) {
-  const [username, setUsername] = useState('')
+  const [username, setUsername] = useState('');
   function generateRandomQuestionNumbers() {
     const numbers = new Set();
     while (numbers.size < constants.QUESTIONS_PER_QUIZ) {
@@ -20,14 +20,19 @@ export function Start({ navigation }) {
   }
 
   return (
-    <View>
-      <Text>Are you ready to challenge your FE knowledge?</Text>
+    <View style={styles.container}>
+      <Text h1 h1Style={styles.title}>
+        Are you ready for the challenge?
+      </Text>
       <Input
         placeholder='User Name'
         leftIcon={{ type: 'font-awesome', name: 'user' }}
         onChangeText={setUsername}
+        containerStyle={styles.name}
       />
       <Button
+        style={styles.quizButton}
+        size='lg'
         title='Start Quiz'
         onPress={() =>
           navigation.navigate('quiz', {
@@ -40,3 +45,22 @@ export function Start({ navigation }) {
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: designTokens.colors.background,
+    flex: 1,
+  },
+  title: {
+    color: 'white',
+    margin: 20,
+  },
+  name: {
+    backgroundColor: 'white',
+    borderRadius: 5,
+    margin: 10,
+    width: '100%',
+  },
+  quizButton: {
+    margin: 10,
+  },
+});

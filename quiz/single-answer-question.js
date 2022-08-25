@@ -50,8 +50,9 @@ export function SingleAnswerQuestion({
           checkedIcon='dot-circle-o'
           uncheckedIcon='circle-o'
           checked={selected.includes(option)}
+          checkedColor="#454442"
           onPress={() => setSelected([option])}
-          title={<Text h4>{option}</Text>}
+          title={<Text h4 style={styles.optionText}>{option}</Text>}
           containerStyle={styles.option}
         ></CheckBox>
       ))}
@@ -60,7 +61,14 @@ export function SingleAnswerQuestion({
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: designTokens.colors.background,
+  },
   option: {
     backgroundColor: designTokens.colors.background,
   },
+  optionText: {
+    color: '#454442',
+    margin:5
+  }
 });

@@ -24,7 +24,7 @@ fileignoreconfig:
 - filename: ios/quizlite/quizlite.entitlements
   checksum: 7845c16cd4a0b2b6808a9c26148f9c0e73f6716f0fe63a1c4f6f7603cc9b065f
 - filename: home.js
-  checksum: 4539a54fefd5eca652f17f3609d5addcf219fd9c97494480146a81d06518bab8
+  checksum: f5b7192f74d5b131d4b573b0c8b9ef45375721f270dd4d86ab17c6184e5aca90
 - filename: ios/quizlite/Supporting/Expo.plist
   checksum: 8a8774753ad3d96ace8b6271a25f41c489bd0899da7169e0850457f761a30ab4
 - filename: ios/quizlite/Info.plist

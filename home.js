@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Text, Button, ListItem, Avatar } from '@rneui/themed';
+import { useState, useEffect, useRef } from 'react';
+import { View, StyleSheet, Animated } from 'react-native';
+import { Text, Button, ListItem, Avatar, Icon } from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import constants from './constants';
+import designTokens from './assets/styles/design-tokens';
 
 export function Home({ navigation }) {
   const [topScorers, setTopScorers] = useState([]);
@@ -33,29 +34,114 @@ export function Home({ navigation }) {
     fetchResults();
   }, []);
 
+  function coloredCelebrationIcon(color) {
+    return (
+      <Icon
+        key={color}
+        color={color}
+        name='celebration'
+        size={40}
+        type='material'
+      />
+    );
+  }
+
   return (
-    <View>
-      <Text h1>CBE FE Community Quiz</Text>
-      <Text h2>Top Scorers</Text>
+    <View style={styles.container}>
+      <Text style={styles.header} h1>
+        CBE FE Community Quiz
+      </Text>
+      <Text style={styles.subtitle} h3>
+        {['red', 'green', 'blue'].map(coloredCelebrationIcon)}
+        Top Scorers
+        {['blue', 'green', 'red'].map(coloredCelebrationIcon)}
+      </Text>
       <View>
-        {topScorers.map((contestant) => (
-          <ListItem key={contestant.username} bottomDivider>
-            <Avatar
-              size={64}
-              rounded
-              title={contestant.username.toUpperCase().substring(0, 2)}
-              containerStyle={{ backgroundColor: '#3d4db7' }}
-            />
-            <ListItem.Content>
-              <ListItem.Title>{contestant.username}</ListItem.Title>
-              <ListItem.Subtitle>
-                Scored {contestant.score} in {contestant.elapsedTime} ms
-              </ListItem.Subtitle>
-            </ListItem.Content>
-          </ListItem>
+        {topScorers.map((contestant, index) => (
+          <MovingView key={contestant.username} isLeftToRight={index % 2 === 0}>
+            <ListItem containerStyle={styles.leader}>
+              <Avatar
+                size={64}
+                rounded
+                title={contestant.username.toUpperCase().substring(0, 2)}
+                containerStyle={{ backgroundColor: '#208bdc' }}
+              />
+              <ListItem.Content>
+                <ListItem.Title style={styles.leaderTitle}>
+                  {contestant.username}
+                </ListItem.Title>
+                <ListItem.Subtitle style={styles.leaderSubtitle}>
+                  Scored {contestant.score} in {contestant.elapsedTime} ms
+                </ListItem.Subtitle>
+              </ListItem.Content>
+            </ListItem>
+          </MovingView>
         ))}
       </View>
-      <Button title='Start Quiz' onPress={() => navigation.navigate('start')} />
+      <Button
+        size='lg'
+        style={styles.quizButton}
+        title='Start Quiz'
+        onPress={() => navigation.push('start')}
+      />
     </View>
   );
 }
+
+const MovingView = ({ style, children, isLeftToRight }) => {
+  const directionInt = isLeftToRight ? -1 : 1;
+  const offsetX = useRef(new Animated.Value(1000 * directionInt)).current;
+
+  useEffect(() => {
+    Animated.timing(offsetX, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  }, [offsetX]);
+
+  return (
+    <Animated.View
+      style={{
+        ...style,
+        transform: [{ translateX: offsetX }],
+      }}
+    >
+      {children}
+    </Animated.View>
+  );
+};
+
+const styles = StyleSheet.create({
+  header: {
+    textAlign: 'center',
+    marginBottom: 50,
+    color:"#fff"
+  },
+  subtitle: {
+    alignSelf: 'center',
+    fontWeight: 'bold',
+    color: '#e8e7e6',
+  },
+  container: {
+    backgroundColor: designTokens.colors.background,
+    flex: 1,
+  },
+  leader: {
+    backgroundColor: '#e8e7e6',
+    borderRadius: 7,
+    margin: 10,
+  },
+  leaderTitle: {
+    fontSize: 35,
+    color: 'black',
+  },
+  leaderSubtitle: {
+    fontSize: 20,
+    color: 'black',
+  },
+  quizButton: {
+    margin: 10,
+    marginTop: 50,
+  },
+});
