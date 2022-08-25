@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import { Text } from '@rneui/themed';
+import { Text, Button } from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import constants from '../constants';
 
@@ -30,6 +30,7 @@ export function Results({ navigation, route }) {
       <Text h3>
         You has scored {result.score} in {result.elapsedTime} ms
       </Text>
+      <Button title='Back To Dashboard' onPress={() => navigation.push('home')} />
     </View>
   );
 }

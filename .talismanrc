@@ -2,11 +2,33 @@ fileignoreconfig:
 - filename: .expo-shared/assets.json
   checksum: eca4a52463b08318f77c92c47260d64275353b45aa0f69da19ef2bafa6a407f3
 - filename: package-lock.json
-  checksum: 218a4736c3db4ca289fb325155ebd7e329d7edfaa6b453a13d51b27b63aefe33
+  checksum: 22c12e95eab08c87860c1e412eb9febcb532884b0910e7843956e49d2e9e57fe
 - filename: quiz/single-answer-question.js
   checksum: e373235045764b2014dc995db250d7c6a465bb7e7147767225643814216cc2d0
 - filename: quiz/multi-answer-question.js
   checksum: 677df90f88b695a8db38795df3eaa8d6802d57c1cb93aa923aa3121e440b6c0f
 - filename: constants.js
   checksum: d9ac1f33c216b658218b527db2c53333479d32a65aee5bb28052202637ab5388
+- filename: ios/.xcode.env
+  checksum: b38a48e7c3739b46abd9f520c7dc6ce4f9411cff1d98cb06aa0e941e2d8899d5
+- filename: .gitignore
+  checksum: dad3b1a433472e8e8e01e6fcf1dbcec48f399243e33afc006560afac07c5c0fa
+- filename: ios/quizlite.xcodeproj/xcshareddata/xcschemes/quizlite.xcscheme
+  checksum: 49d2ee60a464ed77e5c12f57192427dc5021518ce00a6578e4a99ef54d48f19d
+- filename: ios/quizlite/SplashScreen.storyboard
+  checksum: 5283739b31af9230a39e17e651c416f7ea2d034d8c5afe8c03e4aa13b4cdb35d
+- filename: ios/Podfile.lock
+  checksum: a5487a51b59192da42d32f0d800422724b6ccb602b127142bd1e7077317abfff
+- filename: ios/quizlite.xcodeproj/project.pbxproj
+  checksum: 891f77363493771c65b4308fd5bddcae4876d2c2a740578a4240dd3fd5055b2f
+- filename: ios/quizlite/quizlite.entitlements
+  checksum: 7845c16cd4a0b2b6808a9c26148f9c0e73f6716f0fe63a1c4f6f7603cc9b065f
+- filename: home.js
+  checksum: 4539a54fefd5eca652f17f3609d5addcf219fd9c97494480146a81d06518bab8
+- filename: ios/quizlite/Supporting/Expo.plist
+  checksum: 8a8774753ad3d96ace8b6271a25f41c489bd0899da7169e0850457f761a30ab4
+- filename: ios/quizlite/Info.plist
+  checksum: adda29d9d7040b3dfc06ced6f8b254ffbfe55ebea494f594c541ade46c0e58e4
+- filename: ios/quizlite/AppDelegate.mm
+  checksum: 80abfc3e23fc6fdc4608470ca48a8e00e2077b57c685d73c62b9129fef02a19f
 version: ""

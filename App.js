@@ -1,3 +1,4 @@
+import 'expo-dev-client';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { Quiz as QuizScreen } from './quiz';
@@ -7,6 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Results as ResultsScreen } from './results';
 import { Thanks as ThanksScreen } from './thanks';
 import { Home as HomeScreen } from './home';
+import { Start as StartScreen } from './start';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -15,12 +17,10 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name='home' component={HomeScreen} />
-          <Stack.Screen
-            name='quiz'
-            component={QuizScreen}
-          />
+          <Stack.Screen name='quiz' component={QuizScreen} />
           <Stack.Screen name='results' component={ResultsScreen} />
-          <Stack.Screen name='thanks' component={ThanksScreen} /> 
+          <Stack.Screen name='start' component={StartScreen} />
+          <Stack.Screen name='thanks' component={ThanksScreen} />
         </Stack.Navigator>
         {/* <StatusBar style='auto' /> */}
       </NavigationContainer>

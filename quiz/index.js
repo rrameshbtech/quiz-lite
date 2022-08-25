@@ -52,7 +52,7 @@ export function Quiz({ navigation, route }) {
   }
 
   function showResults() {
-    navigation.navigate('results', { username: 'rrameshbtech' });
+    navigation.navigate('results', { username });
   }
 
   const getExistingScores = async () => {
