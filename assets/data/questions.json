@@ -109,6 +109,151 @@
         "py"
       ],
       "type": "Single"
+    },
+    {
+      "description": "In Javascript, What is the output of expression: 5 + !(3>2>1) ?",
+      "answer": ["6"],
+      "options": [
+        "TRUE",
+        "FALSE",
+        "5",
+        "6"
+      ],
+      "type": "Single"
+    },
+    {
+      "description": "In Javascript, What is the output of expression: undefined == null ?",
+      "answer": ["TRUE"],
+      "options": [
+        "undefined",
+        "Nan",
+        "TRUE",
+        "FALSE"
+      ],
+      "type": "Single"
+    },
+    {
+      "description": "In Javascript, what is the output of expression: 10 + null - 1?",
+      "answer": ["9"],
+      "options": [
+        "Nan",
+        "10",
+        "Error",
+        "9"
+      ],
+      "type": "Single"
+    },
+    {
+      "description": "In Javascript, what is the output of expression: 3 + '4' + 5",
+      "answer": ["'345'"],
+      "options": [
+        "'345'",
+        "12",
+        "49",
+        "'75'"
+      ],
+      "type": "Single"
+    },
+    {
+      "description": "Which of following is not valid color in CSS?",
+      "answer": ["color(140,40,5)"],
+      "options": [
+        "#fea",
+        "aliceblue",
+        "color(140,40,5)",
+        "rgb(0,0,100)"
+      ],
+      "type": "Single"
+    },
+    {
+      "description": "What is the default value of `display` for <div>?",
+      "answer": ["block"],
+      "options": [
+        "inline-block",
+        "inline",
+        "block",
+        "none"
+      ],
+      "type": "Single"
+    },
+    {
+      "description": "Which of the following are valid HTML <input/> type?",
+      "answer": ["tel", "range"],
+      "options": [
+        "tel",
+        "address",
+        "range",
+        "double"
+      ],
+      "type": "Multiple"
+    },
+    {
+      "description": "Which of the following is not a module bundler?",
+      "answer": ["eslint"],
+      "options": [
+        "webpack",
+        "Browserify",
+        "eslint",
+        "Rollup"
+      ],
+      "type": "Single"
+    },
+    {
+      "description": "Which of the following are not true about JavaScript?",
+      "answer": ["none of the above"],
+      "options": [
+        "single threaded, non blocking",
+        "follows ECMAScript specification",
+        "function as first class object",
+        "none of the above"
+      ],
+      "type": "Single"
+    },
+    {
+      "description": "Which of the following are ECMAScript engines?",
+      "answer": ["SpiderMonkey", "Chakra"],
+      "options": [
+        "SpiderMonkey",
+        "Quantun",
+        "Gecko",
+        "Chakra"
+      ],
+      "type": "Multiple"
+    },
+    {
+      "description": "To show deleted text, which HTML element is used?",
+      "answer": ["<del>"],
+      "options": [
+        "<del>",
+        "<em>",
+        "<strong>",
+        "<ins>"
+      ],
+      "type": "Single"
+    },
+    {
+      "description": "Which of the following is the correct syntax to create a cookie using JavaScript?",
+      "answer": ["document.cookie = 'key1 = value1; key2 = value2; expires = date';"],
+      "options": [
+        "document.cookie = 'key1 = value1; key2 = value2; expires = date';",
+        "browser.cookie = 'key1 = value1; key2 = value2; expires = date';",
+        "window.cookie = 'key1 = value1; key2 = value2; expires = date';",
+        "navigator.cookie = 'key1 = value1; key2 = value2; expires = date';"
+      ],
+      "type": "Single"
+    },
+    {
+      "description": "Which of the following is not valid Array function in JavaScript?",
+      "answer": ["first"],
+      "options": [
+        "reduce",
+        "find",
+        "first",
+        "join"
+      ],
+      "type": "Single"
     }
+
+
   ]
 }

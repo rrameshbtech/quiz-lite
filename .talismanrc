@@ -31,4 +31,6 @@ fileignoreconfig:
   checksum: adda29d9d7040b3dfc06ced6f8b254ffbfe55ebea494f594c541ade46c0e58e4
 - filename: ios/quizlite/AppDelegate.mm
   checksum: 80abfc3e23fc6fdc4608470ca48a8e00e2077b57c685d73c62b9129fef02a19f
+- filename: start.js
+  checksum: 415602d0956ad310e555139a3f09f969f55c860ce67798ef4d4534c27476a513
 version: ""

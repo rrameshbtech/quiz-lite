@@ -7,7 +7,7 @@ import constants from '../constants';
 import designTokens from '../assets/styles/design-tokens';
 
 export function Quiz({ navigation, route }) {
-  const { username, questions } = route.params;
+  const { username, questions, name } = route.params;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
   const currentQuestion = questions[currentQuestionIndex];
@@ -17,6 +17,7 @@ export function Quiz({ navigation, route }) {
   }
 
   async function handleSubmittedAnswer(score, elapsedTime) {
+    console.log('answer submitted ', score);
     setAnswers((existingAnswers) => [
       ...existingAnswers,
       { score, elapsedTime, index: currentQuestionIndex },
@@ -73,6 +74,7 @@ export function Quiz({ navigation, route }) {
       const existingResults = await getExistingScores();
       const currentResult = {
         username,
+        name,
         answers,
         score: totalScore(),
         elapsedTime: totalElapsedTime(),

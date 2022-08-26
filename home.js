@@ -46,6 +46,9 @@ export function Home({ navigation }) {
     );
   }
 
+  function name(contestant) {
+    return contestant.name ?? "No Name";
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.header} h1>
@@ -63,12 +66,12 @@ export function Home({ navigation }) {
               <Avatar
                 size={64}
                 rounded
-                title={contestant.username.toUpperCase().substring(0, 2)}
+                title={name(contestant).toUpperCase().substring(0, 2)}
                 containerStyle={{ backgroundColor: '#208bdc' }}
               />
               <ListItem.Content>
                 <ListItem.Title style={styles.leaderTitle}>
-                  {contestant.username}
+                {name(contestant)} ({contestant.username})
                 </ListItem.Title>
                 <ListItem.Subtitle style={styles.leaderSubtitle}>
                   Scored {contestant.score} in {contestant.elapsedTime} ms
