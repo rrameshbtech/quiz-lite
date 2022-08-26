@@ -125,6 +125,12 @@ export function Start({ navigation }) {
         title='Start Quiz'
         onPress={startQuiz}
       />
+      <Button
+        style={styles.quizButton}
+        size='lg'
+        title='Back To Dashboard'
+        onPress={() => navigation.push('home')}
+      />
     </View>
   );
 

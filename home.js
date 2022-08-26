@@ -60,6 +60,7 @@ export function Home({ navigation }) {
         {['blue', 'green', 'red'].map(coloredCelebrationIcon)}
       </Text>
       <View>
+        {topScorers.length === 0 && <Text style={styles.noScoreMessage} h4>Ohh! no. Nobody played so far. Start?</Text>}
         {topScorers.map((contestant, index) => (
           <MovingView key={contestant.username} isLeftToRight={index % 2 === 0}>
             <ListItem containerStyle={styles.leader}>
@@ -86,6 +87,12 @@ export function Home({ navigation }) {
         style={styles.quizButton}
         title='Start Quiz'
         onPress={() => navigation.push('start')}
+      />
+      <Button
+        size='lg'
+        style={styles.resetButton}
+        title='Reset Quiz'
+        onPress={() => navigation.push('reset')}
       />
     </View>
   );
@@ -147,4 +154,13 @@ const styles = StyleSheet.create({
     margin: 10,
     marginTop: 50,
   },
+
+  resetButton: {
+    margin: 10,
+    marginTop: 20,
+  },
+  noScoreMessage: {
+    alignSelf:'center',
+    marginTop:50
+  }
 });

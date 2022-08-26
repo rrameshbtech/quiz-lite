@@ -9,6 +9,7 @@ import { Results as ResultsScreen } from './results';
 import { Thanks as ThanksScreen } from './thanks';
 import { Home as HomeScreen } from './home';
 import { Start as StartScreen } from './start';
+import { Reset as ResetScreen } from './reset';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
           <Stack.Screen name='results' component={ResultsScreen} />
           <Stack.Screen name='start' component={StartScreen} />
           <Stack.Screen name='thanks' component={ThanksScreen} />
+          <Stack.Screen name='reset' component={ResetScreen} />
         </Stack.Navigator>
         {/* <StatusBar style='auto' /> */}
       </NavigationContainer>

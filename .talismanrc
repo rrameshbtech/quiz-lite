@@ -33,4 +33,6 @@ fileignoreconfig:
   checksum: 80abfc3e23fc6fdc4608470ca48a8e00e2077b57c685d73c62b9129fef02a19f
 - filename: start.js
   checksum: 415602d0956ad310e555139a3f09f969f55c860ce67798ef4d4534c27476a513
+- filename: reset.js
+  checksum: 9038dfdfc2914aaedb8ac4964b79e9c41c905420de2069c28e49b55bba22cb68
 version: ""
